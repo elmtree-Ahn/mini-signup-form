@@ -133,3 +133,14 @@ $approveBtn.addEventListener('click', () => {
     $modal.close()
     location.reload()
 })
+
+// 5. 폰트 사이즈 조절 버튼
+const $increaseFontBtn = document.getElementById('increase-font-btn')
+const $decreaseFontBtn = document.getElementById('decrease-font-btn')
+
+$increaseFontBtn.addEventListener('click', () => {
+    console.log('+')
+})
+$decreaseFontBtn.addEventListener('click', () => {
+    console.log('-')
+})
