@@ -1,16 +1,10 @@
-// TODO: 이 곳에 정답 코드를 작성해주세요.
 // 1. autofocus
-// 대상 : ID 입력 input
-// 이벤트 : 페이지가 로드 되었을 때,
-// 핸들러 : Focus()
+
 const $id = document.getElementById('id')
 const $idMsg = document.getElementById('id-msg')
 window.addEventListener('load', () => $id.focus())
 
 // 2.유효성 검사 로직
-// 대상 : ID, PW, PW확인 input
-// 이벤트 : (1) input focus out (2) 가입하기 버튼 클릭
-// 핸들러 : (1) 해당 input 유효성 검사 (2) 모든 필드 유효성 검사
 
 const $pw = document.getElementById('pw')
 const $pwMsg = document.getElementById('pw-msg')
@@ -137,10 +131,31 @@ $approveBtn.addEventListener('click', () => {
 // 5. 폰트 사이즈 조절 버튼
 const $increaseFontBtn = document.getElementById('increase-font-btn')
 const $decreaseFontBtn = document.getElementById('decrease-font-btn')
+const $html = document.documentElement
+
+const getHtmlFontSize = () => {
+    return parseFloat(
+        window.getComputedStyle(document.documentElement).fontSize
+    )
+}
 
 $increaseFontBtn.addEventListener('click', () => {
-    console.log('+')
+    const nextFontSize = getHtmlFontSize() + 1
+    $html.style.fontSize = nextFontSize
+    if (nextFontSize >= 20) {
+        $increaseFontBtn.disabled = true
+    }
+    if (nextFontSize > 12) {
+        $decreaseFontBtn.disabled = false
+    }
 })
 $decreaseFontBtn.addEventListener('click', () => {
-    console.log('-')
+    const nextFontSize = getHtmlFontSize() - 1
+    $html.style.fontSize = nextFontSize
+    if (nextFontSize <= 12) {
+        $decreaseFontBtn.disabled = true
+    }
+    if (nextFontSize < 20) {
+        $increaseFontBtn.disabled = false
+    }
 })
